@@ -1,0 +1,118 @@
+{
+  "id": "72c3421a-58d8-4570-a58f-d7e298ebb1dc",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.api-keys": {
+      "name": "api-keys",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "accessKey": {
+          "name": "accessKey",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "storageLimit": {
+          "name": "storageLimit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 50
+        },
+        "storageLimitUnit": {
+          "name": "storageLimitUnit",
+          "type": "storageUnit",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Mb'"
+        },
+        "availableStorage": {
+          "name": "availableStorage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 50
+        },
+        "availableStorageUnit": {
+          "name": "availableStorageUnit",
+          "type": "storageUnit",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Mb'"
+        },
+        "isBlacklisted": {
+          "name": "isBlacklisted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "blacklistReason": {
+          "name": "blacklistReason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "api-keys_accessKey_unique": {
+          "name": "api-keys_accessKey_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "accessKey"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.storageUnit": {
+      "name": "storageUnit",
+      "schema": "public",
+      "values": [
+        "Mb",
+        "Gb"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
