@@ -5,6 +5,7 @@ import { z, ZodError } from "zod";
 const EnvSchema = z.object({
   DATABASE_URL: z.string(),
   PORT: z.coerce.number().default(3000).optional(),
+  JWT_SECRET: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
